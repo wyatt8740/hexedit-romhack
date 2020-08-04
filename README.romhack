@@ -1,0 +1,101 @@
+  Hexedit version 0.9.3 by Adam Rogoyski <apoc@laker.net> Temperanc on EFNet
+  Copyright (C) 1998, 1999 Adam Rogoyski
+
+  Romhacking Features added by Prez <prez@lfx.org> Prez on DALnet
+  for updates and information, please visit: http://prez.lfx.org/
+
+
+  Please see README before reading this file, for existing Hexedit
+information. This file only reflects the Romhacking Features that I've
+added to this software for personal use. 
+
+
+Usage:
+ hexedit [file_to_edit] [table_file_to_use]
+
+(ie. hexedit gdk2e.nes gdk2e.tbl)
+
+
+  WHAT ROMHACKING FEATURES HAVE YOU ADDED:
+
+     As of 0.9.3, I have implemented Table File use, and an
+on-the-location ASM Pointer Calculator. (More below)
+
+
+
+  WHAT IS A TABLE FILE?
+
+     A table file is a table that lets a program know which values are
+used for which characters in a specific character set. This is generally
+useful for people who hack or modify rom dumps of their videogames, as the
+games generally use their own "Character Set".
+
+     A table file looks like follows:
+
+10=A
+11=B
+12=C
+
+    ..and so on! This might be useful to anyone, but for people already
+established using it on DOS platform programs (ie. Hexecute, Hexpouser,
+Thingy) have found that this feature is absent in UNIX hex editors.
+
+    Hit "CTRL - R" to switch from ASCII to your custom table.
+
+   (ps. currently no DTE or dual byte (UNICODE) is supported. sorry ;_;)
+
+
+  HOW DOES THE ASM POINTER CALCULATOR WORK?
+
+    Although I don't much feel like explaining how Pointers work, since
+there are many texts written on the subject
+(http://rpgd.emulationworld.com/ documents section), the program DOES
+calculate the 16 bit pointer of the current location that you are at. Keep
+in mind, this is only for the "standard" type of pointers, if there are
+one. There is support for offset pointers, but I haven't figured out a
+good way to take user input since I don't much know ncurses ^-^;; For the
+time being, the program assumes you want to take off 10h of the value (NES
+roms have a 10 byte header, chopchop). For the time being, if you want to
+change this.. You'll have to source hack. ;_;
+
+   Here is the calculator in action:
+
+File: misc.c                      ASCII Offset: 0x00000528 / 1805 (%07) 
+
+   As you can see, the ASCII Offset is the location in the file, then
+right after that you have your calculated pointer. Yay. (btw, this is in
+the title bar of the editing screen ^-^) 
+    
+
+  WHAT IS COMING IN THE FUTURE?
+
+   Uhmm.. Good question :) I want to take the two features I have so far
+and make them menu based. I tryed doing that last night, but I really need
+to read up on ncurses. After that, I will try and add features that you
+would usually see in most DOS-based hex editors (ie. hexecute, hexpouser,
+thingy). This includes DTE, Relative searching, and other things :P
+
+
+
+ AND TO CONCLUDE...
+  ..sorry for the shabby documentation, I just want to finish it before I
+go out. If you encounter lots of bugs (which you shouldn't), you should
+report them to me, not the original Author. I'll determine who's code is
+at fault (probably mine ^-^) and take appriorate action. Either way, there
+are a few people I should thank :)
+
+
+ LordTech,
+   for the help that you gave me with this, and all that ASM stuff :)
+
+Aziwoqpd
+   hosting my site, of course! what a bother i must be..
+
+DesertAngel
+   all the coding help over the last month or so.. :)
+
+awj, 
+   always helped explained what I never understood :) and come on, he
+translated Moon Crystal ^-^v  
+
+EOF
